@@ -1,0 +1,6 @@
+[submodule "Thor_scsi"]
+	path = thor_scsi
+	url = https://github.com/PierreSchnizer/Thor_scsi.git
+[submodule "flame"]
+	path = flame
+	url = https://github.com/PierreSchnizer/FLAME
