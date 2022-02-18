@@ -33,3 +33,9 @@
 *.exe
 *.out
 *.app
+
+# Build directory
+build/
+
+# install (test) directory
+local/
