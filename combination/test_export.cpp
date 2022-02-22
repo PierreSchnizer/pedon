@@ -18,7 +18,6 @@ BOOST_AUTO_TEST_CASE(config_getset)
 
     C.set<double>("hello", 42);
     // std::cout << "C =" << C << std::endl;
-
     BOOST_CHECK_CLOSE(C.get<double>("hello"), 42, 1e-7);
 
 }
