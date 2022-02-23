@@ -51,13 +51,26 @@ include_directories(
     ${flame_INCLUDE_DIR}
 )
 
+
 add_executable(test_combination
     test_combination.cpp
 )
 add_test(combination test_combination)
-
-
 target_link_libraries(test_combination
+    ${thor_scsi_CORE_LIBRARY}
+    ${thor_scsi_TPSA_LIN_LIBRARY}
+    ${flame_CORE_LIBRARY}
+    ${ARMADILLO_LIBRARIES}
+    ${Boost_PRG_EXEC_MONITOR_LIBRARY}
+    ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY}
+)
+
+
+add_executable(test_drift
+    test_drift.cpp
+)
+add_test(drift test_drift)
+target_link_libraries(test_drift
     ${thor_scsi_CORE_LIBRARY}
     ${thor_scsi_TPSA_LIN_LIBRARY}
     ${flame_CORE_LIBRARY}
