@@ -12,13 +12,21 @@ find_package(Armadillo REQUIRED)
 
 # should already be handled by thor_scsi
 find_package(flame REQUIRED COMPONENTS core)
+# but have to find out how to ensure that core will trigger the loading of tpsa_lin
+# find_package(flame REQUIRED COMPONENTS core)
 message(DEBUG "FLAME found ${flame_FOUND}")
 get_target_property(flame_CORE_LIBRARY flame::flame_core IMPORTED_LOCATION_RELEASE)
 message(STATUS "FLAME core include dirs '${flame_INCLUDE_DIRECTORIES}' library '${flame_CORE_LIBRARY}'")
 
 
 message(STATUS "Loading thor scsi")
-find_package(thor_scsi REQUIRED COMPONENTS core tpsa_lin)
+# Naming the components is this order is critical at this stage
+# Needs a fix in the thor_scsi package
+# Need to learn how to get that dependency exported properly ....
+find_package(thor_scsi REQUIRED COMPONENTS tpsa_lin core)
+# find_package(thor_scsi REQUIRED COMPONENTS core)
+message(STATUS thor_scsi_NOT_FOUND_MESSAGE)
+
 get_target_property(thor_scsi_CORE_LIBRARY thor_scsi::thor_scsi_core IMPORTED_LOCATION_RELEASE)
 get_target_property(thor_scsi_TPSA_LIN_LIBRARY thor_scsi::tpsa_lin IMPORTED_LOCATION_RELEASE)
 message(STATUS "THOR SCSI core library '${thor_scsi_CORE_LIBRARY}'")
